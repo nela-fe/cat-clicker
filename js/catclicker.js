@@ -52,7 +52,6 @@ for(i = 0; i < catNames.length; i++){
             let image = catImages[icopy];
             catImage.innerHTML = '<img width="400px" src="img/' + image + '">';
 
-
         };
     })(i));
 
