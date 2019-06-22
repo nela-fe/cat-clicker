@@ -1,16 +1,36 @@
 * {
-    color: red;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
+
+.content-area {
+    display: flex;
+
+}
+
+.cat-field {
+
+    flex-wrap: wrap;
+}
+
+.display-area {
+    width: 400px;
+    height: 300px;
+    flex-wrap: wrap;
+    margin: 20px 20%;
+}
+
 
 .top-line {
 display: flex;
+
 /* justify-content: space-evenly; */
 
 }
 
 .cat-name {
-    color: black;
     flex-wrap: wrap;
+    margin: 5px;
+    padding: 5px;
 }
 
 .click-counter {
@@ -18,4 +38,6 @@ display: flex;
     flex-wrap: wrap;
 
 }
+
+
 
