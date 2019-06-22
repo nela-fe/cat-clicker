@@ -1,65 +1,94 @@
 let catField = document.querySelector('.cat-field');
 
+let catNames = [
+    'Lucy',
+    'Miranda',
+    'Mickey',
+    'Shay',
+    'Smoothie',
+    'Grumpy',
+    'Two-tone',
+    'Cuddly'];
 
-let numOfClicks = 0;
-let catName = ['Lucy', 'Miranda'];
+
+let catImages = [
+    'cat.jpg',
+    'cutecat1.webp',
+    'cutecat2n.webp',
+    'kitten-440379.jpg',
+    'Smoothie-the-Cat-Instagram-zoom.jpg',
+    'Tech-In-Two-Grumpy-Cat-453408502-w.jpg',
+    'two-tone-cat.jpg',
+    'unnamed.jpg'];
+
+
+let numOfClicks = [0, 0, 0, 0, 0, 0, 0, 0];
 
 
 // get the cats onto the page
 let myCatFrag = document.createDocumentFragment();
 
-for(i = 0; i < 2; i++){
+
+for(i = 0; i < catNames.length; i++){
 
     let newCat = document.createElement('div');
     newCat.classList.add('cat');
 
+    let newTopLine =document.createElement('div');
+    newTopLine.classList.add('top-line');
+
+
     let newCatName = document.createElement('div');
     newCatName.classList.add('cat-name');
-    newCatName.innerHTML = 'Name: '+catName[i];
+    newCatName.innerHTML = catNames[i];
 
     let newCatCounter = document.createElement('div');
     newCatCounter.classList.add('cat-counter');
-    newCatCounter.innerHTML = 'Clicks: 0';
+    newCatCounter.innerHTML = '&nbsp;&nbsp;Clicks: 0';
 
     let newCatImage = document.createElement('div');
     newCatImage.classList.add('cat-image');
-    newCatImage.innerHTML = '<img src="img/minimalist-cat-drawing_s.jpg"></img>';
+    let image = catImages[i];
+    newCatImage.innerHTML = '<img height="120px" src="img/' + image + '">';
 
-    newCat.appendChild(newCatName);
-    newCat.appendChild(newCatCounter);
+
+    newCatImage.addEventListener('click', (function(icopy) {
+
+        // without the inner function code gets executed right away for all i's - why?
+        return function() {
+            console.log("you clicked on cat No. " +icopy);
+            // numOfClicks[icopy] +=1;
+            console.log(numOfClicks[icopy]);
+            numOfClicks[icopy] +=1;
+            console.log(numOfClicks[icopy]);
+            console.log(numOfClicks);
+
+            newCatCounter.innerHTML = "&nbsp;&nbsp;Clicks: "+numOfClicks[icopy];
+        };
+    })(i));
+
+
+    newCat.appendChild(newTopLine);
+    newTopLine.appendChild(newCatName);
+    newTopLine.appendChild(newCatCounter);
     newCat.appendChild(newCatImage);
 
-
     myCatFrag.append(newCat);
-
 }
+
+
 
 catField.appendChild(myCatFrag);
 
 
 
 let cat = document.querySelector('.cat');
-let catImage = document.querySelector('.cat-image');
-// console.log(catImage);
-let catNameField = document.querySelector('.cat-name');
-// console.log(catNameField);
-let counter = document.querySelector('.cat-counter');
-console.log(counter);
-
-
-
-
-        // TODO: add eventListener to catField
-        // increase number for counter of cat that was clicked
-        cat.addEventListener('click', function(){
-            console.log("you clicked");
-            numOfClicks++
-            counter.innerHTML = ("Clicks: "+ numOfClicks);
-        });
-
-
-
-
-
+console.log(cat);
+// let catImage = document.querySelector('.cat-image');
+// // console.log(catImage);
+// let catNameField = document.querySelector('.cat-name');
+// // console.log(catNameField);
+// let counter = document.querySelector('.cat-counter');
+// console.log(counter);
 
 

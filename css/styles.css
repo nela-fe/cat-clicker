@@ -1,0 +1,21 @@
+* {
+    color: red;
+}
+
+.top-line {
+display: flex;
+/* justify-content: space-evenly; */
+
+}
+
+.cat-name {
+    color: black;
+    flex-wrap: wrap;
+}
+
+.click-counter {
+
+    flex-wrap: wrap;
+
+}
+
