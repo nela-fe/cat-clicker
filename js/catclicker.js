@@ -16,7 +16,7 @@ let catObject = {
     images: [
         'cat.jpg',
         'cutecat1.png',
-        'cutecat2.webp',
+        'cutie2.png',
         'kitten-440379.jpg',
         'Smoothie-the-Cat-Instagram-zoom.jpg',
         'Tech-In-Two-Grumpy-Cat-453408502-w.jpg',
