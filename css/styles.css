@@ -7,10 +7,20 @@
 
 }
 
-.cat-field {
-
-    flex-wrap: wrap;
+.cat-list {
+    margin: 5px;
+    padding: 5px;
 }
+
+.cat-name {
+    margin: 5px;
+    padding: 5px;
+}
+
+
+
+
+
 
 .display-area {
     width: 400px;
@@ -20,20 +30,20 @@
 }
 
 
-.top-line {
+.display-top-line {
 display: flex;
 
 /* justify-content: space-evenly; */
 
 }
 
-.cat-name {
+.display-cat-name {
     flex-wrap: wrap;
-    margin: 5px;
-    padding: 5px;
+    /* margin: 5px;
+    padding: 5px; */
 }
 
-.click-counter {
+.display-click-counter {
 
     flex-wrap: wrap;
 
