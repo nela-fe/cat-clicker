@@ -24,43 +24,84 @@ let catObject = {
         'unnamed.jpg'
     ],
 
-    numOfClicks: [0, 0, 0, 0, 0, 0, 0, 0]
+    numOfClicks: [0, 0, 0, 0, 0, 0, 0, 0],
+
+    currentCat: 0
 
 };
-
-// View
-
-// Cat list
-let catList = document.querySelector('.cat-list');
-
-// Display Area
-let displayArea = document.querySelector('.display-area');
-let displayCatImage = document.querySelector('.display-cat-image');
-let displayCatName = document.querySelector('.display-cat-name');
-let displayCounter = document.querySelector('.display-click-counter');
-
-
-
-// "Octopus?"
-
-function showCatName(index) {
-    displayCatName.innerHTML = "Name: " +catObject.names[index];
-}
-
-// put this as a method in the cat object?
-function increaseCounter(index) {
-    catObject.numOfClicks[index] +=1;
-    displayCounter.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;Clicks: "+catObject.numOfClicks[index];
-};
-
-function showImage(index) {
-    let image = catObject.images[index];
-    displayCatImage.innerHTML = '<img width="400px" src="img/' + image + '">';
-}
 
 
 
 // View
+
+let catListView = {
+
+    init: function() {
+        // connect to DOM-elements
+        this.catList = document.querySelector('.cat-list');
+    }
+}
+
+let catDisplayArea = {
+
+    init: function() {
+        // connect to DOM-elements
+        this.image = document.querySelector('.display-cat-image');
+        this.name = document.querySelector('.display-cat-name');
+        this.counter = document.querySelector('.display-click-counter');
+
+
+        this.image.addEventListener('click', function(){
+            octopus.increaseCounter(catObject.currentCat);
+            console.log(catObject.numOfClicks);
+        });
+
+
+
+    }
+}
+
+
+// "Octopus"
+
+let octopus = {
+    showCatName: function(index) {
+        catDisplayArea.name.innerHTML = "Name: " +catObject.names[index];
+    },
+
+    showCounter: function() {
+        catDisplayArea.counter.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;Clicks: "+catObject.numOfClicks[catObject.currentCat];
+    },
+
+    increaseCounter: function(index) {
+        // console.log("increase Counter");
+        catObject.numOfClicks[index] +=1;
+        // console.log(catObject.numOfClicks[index]);
+
+        this.showCounter()
+    },
+
+    showImage: function(index) {
+        let image = catObject.images[index];
+        catDisplayArea.image.innerHTML = '<img width="400px" src="img/' + image + '">';
+    },
+
+    setCurrentCat: function(index) {
+        catObject.currentCat = index;
+        console.log("current Cat: "+catObject.currentCat);
+    }
+
+}
+
+catListView.init();
+catDisplayArea.init();
+
+
+
+// View?
+
+// TODO: Make View into object, all at one place
+
 
 // show list of cat names
 let catListFrag = document.createDocumentFragment();
@@ -70,18 +111,20 @@ for(i = 0; i < catObject.names.length; i++){
     newCatName.classList.add('cat-name');
     newCatName.innerHTML = catObject.names[i];
 
-    // add event listeners to each cat (index saved in a closure)
+    // add event listeners to each cat name (index saved in a closure)
     newCatName.addEventListener('click', (function(icopy) {
 
         return function() {
 
-            showCatName(icopy);
-            increaseCounter(icopy);
-            showImage(icopy);
+            octopus.showCatName(icopy);
+            // octopus.increaseCounter(icopy);  // add event listener to IMAGE area, store "current cat"
+            octopus.showImage(icopy);
+            octopus.setCurrentCat(icopy);
+            octopus.showCounter(icopy);
 
         };
     })(i));
 
     catListFrag.append(newCatName);
 }
-catList.appendChild(catListFrag);
+catListView.catList.appendChild(catListFrag);

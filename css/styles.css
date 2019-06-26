@@ -4,50 +4,30 @@
 
 .content-area {
     display: flex;
-
 }
 
-.cat-list {
+.cat-list, .cat-name {
     margin: 5px;
     padding: 5px;
 }
-
-.cat-name {
-    margin: 5px;
-    padding: 5px;
-}
-
-
-
-
-
 
 .display-area {
+    flex-wrap: wrap;
     width: 400px;
     height: 300px;
-    flex-wrap: wrap;
     margin: 20px 20%;
 }
 
-
-.display-top-line {
-display: flex;
-
-/* justify-content: space-evenly; */
+.display-area img {
+    width: 400px;
 
 }
 
-.display-cat-name {
-    flex-wrap: wrap;
-    /* margin: 5px;
-    padding: 5px; */
+.display-cat-name,
+.display-click-counter{
+    display: inline;
 }
 
-.display-click-counter {
-
-    flex-wrap: wrap;
-
-}
 
 
 
